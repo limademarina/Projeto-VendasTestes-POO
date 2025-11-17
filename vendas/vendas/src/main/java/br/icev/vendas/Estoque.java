@@ -8,10 +8,9 @@ import br.icev.vendas.excecoes.SemEstoqueException;
         private String produto;
         private int codigo;
 
-        // Construtor
         public Estoque(int quantidade, String produto, int codigo) {
             if (quantidade <= 0) {
-                throw new IllegalArgumentException("Erro: quantidade deve ser maior que zero!");
+                throw new IllegalArgumentException("Erro: quantidade deve ser maior que zero.");
             }
             this.quantidade = quantidade;
             this.produto = produto;
@@ -32,7 +31,7 @@ import br.icev.vendas.excecoes.SemEstoqueException;
 
         public void setQuantidade(int quantidade) {
             if (quantidade < 0) {
-                throw new IllegalArgumentException("Quantidade não pode ser negativa!");
+                throw new IllegalArgumentException("Quantidade não pode ser negativa.");
             }
             this.quantidade = quantidade;
         }
@@ -47,7 +46,7 @@ import br.icev.vendas.excecoes.SemEstoqueException;
 
         public void adicionarEstoque(int quantidade) throws QuantidadeInvalidaException {
             if (quantidade <= 0) {
-                throw new QuantidadeInvalidaException("Quantidade para adicionar deve ser maior que zero!");
+                throw new QuantidadeInvalidaException("Quantidade deve ser maior que zero.");
             }
             this.quantidade += quantidade;
         }
