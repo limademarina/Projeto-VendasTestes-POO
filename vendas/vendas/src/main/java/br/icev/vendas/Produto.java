@@ -1,22 +1,36 @@
 package br.icev.vendas;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Produto {
-    private final String codigo;
-    private final String nome;
-    private final BigDecimal precoUnitario;
+
+    private String codigo;
+    private String nome;
+    private BigDecimal precoUnitario;
 
     public Produto(String codigo, String nome, BigDecimal precoUnitario) {
-        throw new UnsupportedOperationException("TODO implementar");
+
+        if (codigo == null || codigo.isBlank()) {
+            throw new IllegalArgumentException("Não pode ser vazio.");
+        }
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Não pode ser vazio.");
+        }
+        if (precoUnitario == null || precoUnitario.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Preço deve ser maior que zero.");
+        }
+
+        this.codigo = codigo;
+        this.nome = nome;
+        this.precoUnitario = precoUnitario;
     }
-
-    public String getCodigo() { throw new UnsupportedOperationException("TODO"); }
-    public String getNome() { throw new UnsupportedOperationException("TODO"); }
-    public BigDecimal getPrecoUnitario() { throw new UnsupportedOperationException("TODO"); }
-
-    @Override
-    public boolean equals(Object o) { throw new UnsupportedOperationException("TODO"); }
-    @Override
-    public int hashCode() { throw new UnsupportedOperationException("TODO"); }
-}
+    public String getCodigo() {
+        return codigo;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public BigDecimal getPrecoUnitario() {
+        return precoUnitario;
+    }
